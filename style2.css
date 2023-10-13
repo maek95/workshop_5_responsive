@@ -17,11 +17,14 @@ p {
   margin-top: 1rem; /* margin instead of padding so <p> wont affect itself twice with 1rem top&bottom... */
   margin-bottom: 1rem;
   font-size: 1rem;
+}
 
+.section4 p, .section5 p {
+  margin-bottom: 0; /* section ends with p element... */
 }
 
 h1 {
-  padding-left: 1rem;
+  padding-left: 2rem;
   font-size: 2.3rem;
 }
 
@@ -32,6 +35,8 @@ h2 {
 button {
   font-size: 1rem;
 }
+
+
 
 /* .body-container {
 
@@ -44,28 +49,42 @@ header {
   background-color: #333;
   color: #fff;
   text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  
+ /*  padding-top: 1rem; /* put the padding at nav-header-hamburger so its :hover covers from top to bottom! */
+ /* padding-bottom: 1rem; */
+   
   box-sizing: border-box;
   /* width: 768px; */
  /*  width: 100%; */
 }
 
 .nav-header-hamburger {
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .nav-header {
   display: none; /* display: flex; in @media (min-width: 768px) */
   text-align: center;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .nav-header a { 
-  color: #fff;
+ /*  color: #fff; */
+  color: #b9b9b9;
   text-decoration: none;
   margin: 0 20px;
+
+  transition: color 0.3s; /* 0.3seconds to return to its original color after user stops hovering */
+}
+
+.nav-header a:hover {
+  color: #f1f1f1;
+/*   color: #fff; */
+}
+
+.nav-header-hamburger:hover {
+  cursor: pointer;
+  color: #333;
+  background-color: #ddd;
 }
 
 img, .catGrid {
@@ -87,18 +106,17 @@ main {
 }
 
 .section {
-  padding: 40px;
+  padding: 2rem;
   background-color: #f1f1f1;
-  margin: 10px;
+  /* margin: 10px; /* why margin and padding? */
   border: 1px solid #ddd;
   border-radius: 5px;
-
 }
 
 .section1 {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-evenly; /* adjusts the img's position a bit?*/
   /* gap: 30px; /* adds gaps to the sides as well... not just between the text and image */
  /*  width: 100%; */
 }
@@ -106,10 +124,9 @@ main {
 .section1Text {
   display: flex;
   flex-direction: column;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 
   text-align: center;
-
 }
 
 .section1 h2 {
@@ -151,22 +168,75 @@ main {
   padding: 0.8rem 1.5rem;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+  cursor: pointer; 
+  /* transition: opacity 0.15s; */
 }
 
-.section2 img {
-  width: 100%;
+.button:hover {
+  opacity: 0.7;
 }
+
+.section1Text button {
+  animation: button-animation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.section2 {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.section2-img-container {
+  height: 100%;
+  /* width: 100%; */
+  /* background-size: contain; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  animation: background-image-animation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+/* .section2 img {
+  width: 100%;
+  border-radius: 10px;
+  height: auto;
+}
+
+.section2 .img2 {
+  
+   display: none; 
+ 
+} */
 
 .section3 {
   display: flex;
   flex-direction: column;
+  
 }
 
-.section3TextandGrid {
-  /* display: flex;
-  flex-direction: column;
-  margin: 0 10rem; */
+.section3 button {
+ /*  margin: auto; */
+}
+
+.section3 .button-container {
+  padding-bottom: 1rem;
+}
+
+.section3 .button {
+  padding: 1.5rem 2.5rem;
+}
+
+.catGrid-container {
+  /* move out of page... 100% does not account padding so we will see a small portion of the images! could type e.g. 120% to hide it completely */
+  transform: translate(-100%, 0px);
+  transition: transform 1300ms;
 }
 
 .catGrid {
@@ -180,12 +250,51 @@ main {
   height: auto;
 }
 
+/* hover on button-container so catGrid doesnt start dissappearing when dragging the mouse down past the padding! */
+.section3 .button-container:hover + .catGrid-container {
+  transform: translate(0px, 0px);
+  transition: transform 1300ms ease-in;
+}
+
+.catGrid-container:hover {
+  transform: translate(0px, 0px); /* Since we will see a small portion of the images at the left corner... the user can hover over that and it will reveal the images... AND the cat pictures stay when you hover over them! */
+}
+
 footer {
   background-color: #333;
   color: #fff;
   text-align: center;
   padding: 10px;
 }
+
+@keyframes button-animation {
+  from {
+    background-color: black;
+  }
+  to {
+    background-color: #555;
+  }
+}
+
+@keyframes background-image-animation {
+  from {
+    background-image: url(images/2.jpeg);
+  }
+  to {
+    background-image: url(images/cool-cat.jpg);
+  }
+}
+
+/* @keyframes image-animation {
+  from {
+      
+      visibility: hidden;
+    
+  }
+  to {
+    visibility: visible
+  }
+} */
 
 @media (min-width: 768px) {
   html {
@@ -198,6 +307,10 @@ footer {
 
   .container {
     width: 100%;
+  }
+
+  .section {
+    padding: 3rem;
   }
 
   nav {
@@ -220,6 +333,7 @@ footer {
   
   .section1Text {
     width: 50%;
+    padding: 0; /* to remove padding-bottom: 1rem; */
     padding-right: 2rem;
   }
   
@@ -242,12 +356,40 @@ footer {
     text-align: start;
   }
 
-  .button-container {
+  .section1 .button-container {
     align-self: start;
+  }
+
+  .section2, .section3 {
+    /* text-align: center;
+    align-items: center; */
+  }
+
+  .section2 {
+    text-align: center;
+  }
+
+  .section2 {
+    height: 500px;
+  }
+
+  .section3 {
+    align-items: center;
+    text-align: center;
   }
 
 }
 
+@media (min-width: 1025px) {
+  .section2 {
+    height: 700px;
+  }
+
+  .section2-img-container {
+  }
+}
+
+/*  MAX(!!!) WIDTH*/
 @media (max-width: 480px) {
   html {
     font-size: 11px;
@@ -259,6 +401,10 @@ footer {
 
   .section1Text p {
     padding: 0;
+  }
+
+  .section2 {
+    height: 300px;
   }
 }
 
