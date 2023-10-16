@@ -173,14 +173,52 @@ main {
 }
 
 .button:hover {
-  opacity: 0.7;
+  /* opacity: 0.7; */
 }
 
-.section1Text button {
-  animation: button-animation;
+.section1 .button {
+  background-color: rgb(62, 108, 62);
+  overflow: hidden;
+  display: inline-block; /* same as the span...? */
+  border: 0.1rem solid grey; /* need a border, otherwise the transition back to 'border:none' becomes weird. */
+  width: 9.1rem; /* font-sizes change with screen size, and so does this button! */
+  /* we set WIDTH here since it is otherwise hard to center the text without this... and text-indent works weird...?*/
+  
+  transition: all 1.2s, padding 1.2s, border 0.5s 1.2s, box-shadow 0.3s 1.5s;
+  /* NOTE: transform: all 1.2s; even adds transform-duration between @media queries!*/
+  white-space: nowrap;
+  text-indent: 0.4rem; /* since <span> is taking space even though you cant see it... */
+  font-weight: bold;
+
+  /* not using this: */
+ /*  animation: button-animation;
   animation-duration: 4s;
   animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation-direction: alternate; */
+}
+
+.section1 .button span {
+  display: inline-block;
+  transform: translateX(50px); /* move span 50px to the right (outside)... */
+  opacity: 0;
+  /*transition-delay
+transition-duration       I think??*/ 
+  transition: opacity 0.1s 0.5s, transform 0.4s 0.5s;
+  
+  font-weight: normal;
+}
+
+.section1 .button:hover {
+/*   width: 150px; */
+  width: 13rem;
+  background: rgb(1, 60, 1);
+  padding: 0.8rem 2.2rem;
+  border: 0.5rem solid rgb(71, 115, 71);
+  box-shadow: 3px black;
+}
+.section1 .button:hover span {
+  transform: translateX(0); /* "flies in" from the right */
+  opacity: 1; /* fades in from 0 opacity */
 }
 
 .section2 {
@@ -190,17 +228,23 @@ main {
 }
 
 .section2-img-container {
+  background-image: url(images/2.jpg), url(images/cool-cat.jpg), url(images/cool-cat-2.jpg), url(images/mad-cat.jpg);  /* preload images to remove flicker....!  https://stackoverflow.com/questions/46048321/how-to-get-rid-of-the-white-flash-when-changing-background-image-with-animation?rq=3 */
   height: 100%;
   /* width: 100%; */
-  /* background-size: contain; */
+ /*  background-size: contain; */
   background-size: cover;
   background-repeat: no-repeat;
-  background-size: 100%;
-
+  background-position: 0%; /* resize/stretch becomes different? */
+ 
+  /* ändra så att bilderna inte stretchar i animation? */
   animation: background-image-animation;
-  animation-duration: 5s;
+  animation-delay: 0s;
+  animation-duration: 15s;
   animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
+  /* The animation is played forwards first, then backwards: */ 
+  animation-direction: alternate; /* how do we get it to start from the beginning again... but transition? */
+  /*  Specifies an animation with the same speed from start to end: (not default setting!?) */
+  animation-timing-function: linear;
 }
 
 /* .section2 img {
@@ -231,6 +275,10 @@ main {
 
 .section3 .button {
   padding: 1.5rem 2.5rem;
+}
+
+.section3 .button:hover {
+  opacity: 0.7;
 }
 
 .catGrid-container {
@@ -266,7 +314,7 @@ footer {
   text-align: center;
   padding: 10px;
 }
-
+/* 
 @keyframes button-animation {
   from {
     background-color: black;
@@ -274,15 +322,31 @@ footer {
   to {
     background-color: #555;
   }
-}
+} */
 
 @keyframes background-image-animation {
-  from {
+  0% {
+    background-image: url(images/2.jpg);
+  }
+  /* 18% {
+    background-image: url(images/2.jpeg);
+  } */
+  25% {
+    background-image: url(images/cool-cat.jpg);
+  }
+  50% {
+    background-image: url(images/cool-cat-2.jpg);
+  }
+  100% {
+    background-image: url(images/mad-cat.jpg);
+  }
+
+/*   from {
     background-image: url(images/2.jpeg);
   }
   to {
     background-image: url(images/cool-cat.jpg);
-  }
+  } */
 }
 
 /* @keyframes image-animation {
