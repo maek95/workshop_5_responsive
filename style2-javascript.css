@@ -9,8 +9,14 @@ html {
 
 body {
   font-family: Arial, sans-serif;
+  min-width: 320px; /* lowest width of any relevant device? */
   /* margin: 0;
   padding: 0; */
+}
+
+a {
+  text-decoration: none;
+  color: inherit; /* remove blue link color... take on the colour of its parent... which is...?*/
 }
 
 p {
@@ -35,12 +41,6 @@ h2 {
 button {
   font-size: 1rem;
 }
-
-
-
-/* .body-container {
-
-} */
 
 header {
   display: flex;
@@ -229,8 +229,7 @@ transition-duration       I think??*/
 
 .section2-img-container {
   background-image: url(images/2.jpg), url(images/cool-cat.jpg), url(images/cool-cat-2.jpg), url(images/mad-cat.jpg);  /* preload images to remove flicker....!  https://stackoverflow.com/questions/46048321/how-to-get-rid-of-the-white-flash-when-changing-background-image-with-animation?rq=3 */
-  height: 100%;
-  /* width: 100%; */
+  height: 100%; /* of remaining space in section2 */
  /*  background-size: contain; */
   background-size: cover;
   background-repeat: no-repeat;
@@ -243,7 +242,7 @@ transition-duration       I think??*/
   animation-iteration-count: infinite;
   /* The animation is played forwards first, then backwards: */ 
   animation-direction: alternate; /* how do we get it to start from the beginning again... but transition? */
-  /*  Specifies an animation with the same speed from start to end: (not default setting!?) */
+  /*  Specifies an animation with the same speed from start to end: (not default setting?) */
   animation-timing-function: linear;
 }
 
@@ -284,7 +283,7 @@ transition-duration       I think??*/
 .catGrid-container {
   /* move out of page... 100% does not account padding so we will see a small portion of the images! could type e.g. 120% to hide it completely */
   transform: translate(-100%, 0px);
-  transition: transform 1300ms;
+  transition: transform 1300ms; /* 1300ms to return to -100% right */
 }
 
 .catGrid {
@@ -380,6 +379,13 @@ footer {
   nav {
    /*  display: flex; */
   }
+
+  /* doesnt return to this after clicking on button? */
+  header {
+    display: flex;
+  }  
+  
+  /* but returns to this? */
   .nav-header-hamburger {
     display: none;
   }
@@ -475,3 +481,5 @@ footer {
 @media (max-width: 768px) {
   
 }
+
+/* 320px is the lowest width... */

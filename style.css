@@ -4,11 +4,12 @@
 }
 
 html {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 body {
   font-family: Arial, sans-serif;
+  min-width: 320px; /* lowest width of any relevant device? */
   /* margin: 0;
   padding: 0; */
 }
@@ -19,8 +20,12 @@ p {
   font-size: 1rem;
 }
 
+.section4 p, .section5 p {
+  margin-bottom: 0; /* section ends with p element... */
+}
+
 h1 {
-  padding-left: 1rem;
+  padding-left: 2rem;
   font-size: 2.3rem;
 }
 
@@ -32,10 +37,6 @@ button {
   font-size: 1rem;
 }
 
-/* .body-container {
-
-} */
-
 header {
   display: flex;
   justify-content: space-between;
@@ -43,28 +44,42 @@ header {
   background-color: #333;
   color: #fff;
   text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  
+ /*  padding-top: 1rem; /* put the padding at nav-header-hamburger so its :hover covers from top to bottom! */
+ /* padding-bottom: 1rem; */
+   
   box-sizing: border-box;
   /* width: 768px; */
  /*  width: 100%; */
 }
 
 .nav-header-hamburger {
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .nav-header {
   display: none; /* display: flex; in @media (min-width: 768px) */
   text-align: center;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .nav-header a { 
-  color: #fff;
+ /*  color: #fff; */
+  color: #b9b9b9;
   text-decoration: none;
   margin: 0 20px;
+
+  transition: color 0.3s; /* 0.3seconds to return to its original color after user stops hovering */
+}
+
+.nav-header a:hover {
+  color: #f1f1f1;
+/*   color: #fff; */
+}
+
+.nav-header-hamburger:hover {
+  cursor: pointer;
+  color: #333;
+  background-color: #ddd;
 }
 
 img, .catGrid {
@@ -86,66 +101,184 @@ main {
 }
 
 .section {
-  padding: 40px;
+  padding: 2rem;
   background-color: #f1f1f1;
-  margin: 10px;
+  /* margin: 10px; /* why margin and padding? */
   border: 1px solid #ddd;
   border-radius: 5px;
-  
-/*   width: 100%; */
 }
 
 .section1 {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly; /* adjusts the img's position a bit?*/
   /* gap: 30px; /* adds gaps to the sides as well... not just between the text and image */
  /*  width: 100%; */
-  
 }
 
 .section1Text {
-  width: 50%;
-  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+
+  text-align: center;
+}
+
+.section1 h2 {
+  font-size: 2.2rem;
+}
+
+.section1Text p {
+  padding: 0 2rem
 }
 
 .section1-img-container {
-  width: 50%;
+  display: flex;
+  justify-content: center;
+  max-height: 50%;
 }
 
 .section1 img {
-  width: 100%;
-  height: auto;
   border-radius: 10px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .section1 h2 {
  /*  font-size: 2.5rem; */
 }
 
+.button-container {
+  align-self: center;
+}
+
 .button {  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background-color: #555;
   color: #fff;
  /*  padding: 10px 20px; */
   padding: 0.8rem 1.5rem;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+  cursor: pointer; 
+  /* transition: opacity 0.15s; */
 }
 
-.section2 img {
-  width: 100%;
+.button:hover {
+  /* opacity: 0.7; */
 }
+
+.section1 .button {
+  background-color: rgb(62, 108, 62);
+  overflow: hidden;
+  display: inline-block; /* same as the span...? */
+  border: 0.1rem solid grey; /* need a border, otherwise the transition back to 'border:none' becomes weird. */
+  width: 9.1rem; /* font-sizes change with screen size, and so does this button! */
+  /* we set WIDTH here since it is otherwise hard to center the text without this... and text-indent works weird...?*/
+  
+  transition: all 1.2s, padding 1.2s, border 0.5s 1.2s, box-shadow 0.3s 1.5s;
+  /* NOTE: transform: all 1.2s; even adds transform-duration between @media queries!*/
+  white-space: nowrap;
+  text-indent: 0.4rem; /* since <span> is taking space even though you cant see it... */
+  font-weight: bold;
+
+  /* not using this: */
+ /*  animation: button-animation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate; */
+}
+
+.section1 .button span {
+  display: inline-block;
+  transform: translateX(50px); /* move span 50px to the right (outside)... */
+  opacity: 0;
+  /*transition-delay
+transition-duration       I think??*/ 
+  transition: opacity 0.1s 0.5s, transform 0.4s 0.5s;
+  
+  font-weight: normal;
+}
+
+.section1 .button:hover {
+/*   width: 150px; */
+  width: 13rem;
+  background: rgb(1, 60, 1);
+  padding: 0.8rem 2.2rem;
+  border: 0.5rem solid rgb(71, 115, 71);
+  box-shadow: 3px black;
+}
+.section1 .button:hover span {
+  transform: translateX(0); /* "flies in" from the right */
+  opacity: 1; /* fades in from 0 opacity */
+}
+
+.section2 {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.section2-img-container {
+  background-image: url(images/2.jpg), url(images/cool-cat.jpg), url(images/cool-cat-2.jpg), url(images/mad-cat.jpg);  /* preload images to remove flicker....!  https://stackoverflow.com/questions/46048321/how-to-get-rid-of-the-white-flash-when-changing-background-image-with-animation?rq=3 */
+  height: 100%; /* of remaining space in section2 */
+ /*  background-size: contain; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0%; /* makes the stretch-animation better...? */
+ 
+  /* ändra så att bilderna inte stretchar i animation? */
+  animation: background-image-animation;
+  animation-delay: 0s;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  /* The animation is played forwards first, then backwards: */ 
+  animation-direction: alternate; /* how do we get it to start from the beginning again... but transition? */
+  /*  Specifies an animation with the same speed from start to end: (not default setting?) */
+  animation-timing-function: linear;
+}
+
+/* .section2 img {
+  width: 100%;
+  border-radius: 10px;
+  height: auto;
+}
+
+.section2 .img2 {
+  
+   display: none; 
+ 
+} */
 
 .section3 {
   display: flex;
   flex-direction: column;
+  
 }
 
-.section3TextandGrid {
-  /* display: flex;
-  flex-direction: column;
-  margin: 0 10rem; */
+.section3 button {
+ /*  margin: auto; */
+}
+
+.section3 .button-container {
+  padding-bottom: 1rem;
+}
+
+.section3 .button {
+  padding: 1.5rem 2.5rem;
+}
+
+.section3 .button:hover {
+  opacity: 0.7;
+}
+
+.catGrid-container {
+  /* move out of page... 100% does not account padding so we will see a small portion of the images! could type e.g. 120% to hide it completely */
+  transform: translate(-100%, 0px);
+  transition: transform 1300ms; /* 1300ms to return to -100% right */
 }
 
 .catGrid {
@@ -159,16 +292,72 @@ main {
   height: auto;
 }
 
+/* hover on button-container so catGrid doesnt start dissappearing when dragging the mouse down past the padding! */
+.section3 .button-container:hover + .catGrid-container {
+  transform: translate(0px, 0px);
+  transition: transform 1300ms ease-in;
+}
+
+.catGrid-container:hover {
+  transform: translate(0px, 0px); /* Since we will see a small portion of the images at the left corner... the user can hover over that and it will reveal the images... AND the cat pictures stay when you hover over them! */
+}
+
 footer {
   background-color: #333;
   color: #fff;
   text-align: center;
   padding: 10px;
 }
+/* 
+@keyframes button-animation {
+  from {
+    background-color: black;
+  }
+  to {
+    background-color: #555;
+  }
+} */
+
+@keyframes background-image-animation {
+  0% {
+    background-image: url(images/2.jpg);
+  }
+ /*  24.99% {
+    background-image: url(images/2.jpg);
+  } */
+  
+  25% {
+    background-image: url(images/cool-cat.jpg);
+  }
+  50% {
+    background-image: url(images/cool-cat-2.jpg);
+  }
+  100% {
+    background-image: url(images/mad-cat.jpg);
+  }
+
+/*   from {
+    background-image: url(images/2.jpeg);
+  }
+  to {
+    background-image: url(images/cool-cat.jpg);
+  } */
+}
+
+/* @keyframes image-animation {
+  from {
+      
+      visibility: hidden;
+    
+  }
+  to {
+    visibility: visible
+  }
+} */
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+  /*   font-size: 16px; */
   }
 
   main {
@@ -177,6 +366,10 @@ footer {
 
   .container {
     width: 100%;
+  }
+
+  .section {
+    padding: 3rem;
   }
 
   nav {
@@ -190,14 +383,92 @@ footer {
     display: flex;
   }
 
+  .section1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .section1Text {
+    width: 50%;
+    padding: 0; /* to remove padding-bottom: 1rem; */
+    padding-right: 2rem;
+  }
+  
+  .section1-img-container {
+    max-height: none;
+    width: 50%;
+  }
+  
+  .section1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .section1Text p {
+    padding: 0;
+  }
+
+  .section1Text {
+    text-align: start;
+  }
+
+  .section1 .button-container {
+    align-self: start;
+  }
+
+  .section2, .section3 {
+    /* text-align: center;
+    align-items: center; */
+  }
+
+  .section2 {
+    text-align: center;
+  }
+
+  .section2 {
+    height: 500px;
+  }
+
+  .section3 {
+    align-items: center;
+    text-align: center;
+  }
+
 }
 
+@media (min-width: 1025px) {
+  .section2 {
+    height: 700px;
+  }
+
+  .section2-img-container {
+  }
+}
+
+/*  MAX(!!!) WIDTH*/
 @media (max-width: 480px) {
   html {
-    font-size: 10px;
+    font-size: 11px;
+  }
+
+  .section1 h2 {
+    font-size: 2rem;
+  }
+
+  .section1Text p {
+    padding: 0;
+  }
+
+  .section2 {
+    height: 300px;
   }
 }
 
 @media (max-width: 768px) {
   
 }
+
+/* 320px is the lowest width... */

@@ -5,98 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
 
-     <!-- script code to add e.g. fontawesome thingy to easily add anything from their website? -->
-    <script src="https://kit.fontawesome.com/bae1ca9465.js" crossorigin="anonymous"></script>
+    <!-- script code to add e.g. fontawesome thingy to easily add anything from their website? -->
+    <script
+      src="https://kit.fontawesome.com/bae1ca9465.js"
+      crossorigin="anonymous"
+    ></script>
 
     <title>Kattsidan</title>
   </head>
   <body>
     <div class="body-container">
-    <header>
-      <h1>Kattsidan</h1>
-      <nav class="nav-header">
-        <a href="#">Start</a>
-        <a href="#">Katter</a>
-        <a href="#">Om oss</a>
-        <a href="#">Kontakt</a>
-      </nav>
-      <nav class="nav-header-hamburger">
-        <i class="fa-solid fa-bars"></i>
-      </nav>
-    </header>
-    <main>
-      <div class="container">
-        <div class="section section1">
-          <div class="section1Text">
-            <h2>Välkommen till vår kattsida</h2>
-            <p>
-              Här kan du upptäcka spännande fakta om katter och deras beteende.
-              Utforska våra artiklar och bilder och lär dig mer om dessa
-              underbara varelser.
-            </p>
-            <p>
-              Om du älskar katter lika mycket som vi gör, varför inte gå med i
-              vår kattklubb? Klicka på knappen nedan för att bli medlem!
-            </p>
-            <button class="button">Bli medlem</button>
-          </div>
-          <div class="section1-img-container">
-            <img src="images/1.webp" alt="Katt 1" />
-          </div>
-        </div>
-        <div class="section section2">
-          <h2>Våra Katter</h2>
-          <p>
-            Här kan du läsa om några av våra underbara katter och deras
-            personligheter. Kolla in bilder på dem nedan.
-          </p>
-          <img src="images/2.jpeg" alt="Katt 1" />
-        </div>
-
-        <div class="section section3">
-          <div class="section3TextandGrid">
-          <div class="section3Text">
-            <h2>Kattbilder</h2>
-            <p>
-              Kolla in några söta kattbilder här. Du kan lägga till fler bilder
-              nedan.
-            </p>
-          </div>
-          <div class="catGrid-container">
-            <div class="catGrid">
-              <img src="images/3.webp" alt="Katt 3" />
-              <img src="images/4.webp" alt="Katt 4" />
-              <img src="images/5.webp" alt="Katt 5" />
-              <img src="images/6.jpeg" alt="Katt 6" />
-              <img src="images/7.jpeg" alt="Katt 7" />
-              <img src="images/8.jpeg" alt="Katt 8" />
+      <header>
+        <h1>Kattsidan</h1>
+        <nav class="nav-header">
+          <!-- # takes us to the top of the page -->
+          <a href="#">Start</a>
+          <!-- http://127.0.0.1:5502/index2.html#katter -->
+          <a href="#katter">Katter</a>
+          <a href="#om-oss">Om oss</a>
+          <a href="#bottom">Kontakt</a>
+        </nav>
+        <a class="nav-header-hamburger">
+          <i class="fa-solid fa-bars"></i>
+        </a>
+      </header>
+      <main>
+        <div class="container">
+          <div class="section section1">
+            <div class="section1Text">
+              <h2>Välkommen till vår kattsida</h2>
+              <p>
+                Här kan du upptäcka spännande fakta om katter och deras
+                beteende. Utforska våra artiklar och bilder och lär dig mer om
+                dessa underbara varelser.
+              </p>
+              <p>
+                Om du älskar katter lika mycket som vi gör, varför inte gå med i
+                vår kattklubb? Klicka på knappen nedan för att bli medlem!
+              </p>
+              <div class="button-container">
+                <button class="button">Bli medlem<span>nu!</span></button>
+              </div>
+            </div>
+            <div class="section1-img-container">
+              <img src="images/1.webp" alt="Katt 1" />
             </div>
           </div>
+          <div class="section section2">
+            <a name="katter" id="katter"></a>
+            <h2>Våra Katter</h2>
+            <p>
+              Här kan du läsa om några av våra underbara katter och deras
+              personligheter. Kolla in bilder på dem nedan.
+            </p>
+            <div class="section2-img-container">
+              <!-- <img class="img1" src="images/2.jpeg" alt="Katt 1" /> -->
+              <!--  <img class="img2" src="images/cool-cat.jpg" alt="Katt 2" /> -->
+            </div>
+          </div>
+
+          <div class="section section3">
+            <div class="section3Text">
+              <h2>Kattbilder</h2>
+              <p>
+                Kolla in några söta kattbilder här. Du kan lägga till fler
+                bilder nedan.
+              </p>
+            </div>
+            <div class="button-container">
+              <button class="button">Bilder</button>
+            </div>
+            <div class="catGrid-container">
+              <div class="catGrid">
+                <img src="images/3.webp" alt="Katt 3" />
+                <img src="images/4.webp" alt="Katt 4" />
+                <img src="images/5.webp" alt="Katt 5" />
+                <img src="images/6.jpeg" alt="Katt 6" />
+                <img src="images/7.jpeg" alt="Katt 7" />
+                <img src="images/8.jpeg" alt="Katt 8" />
+              </div>
+            </div>
+          </div>
+          <div class="section section4">
+            <a name="om-oss" id="om-oss"></a>
+            <h2>Om Oss</h2>
+            <p>Lite information om vår kattklubb och vår kärlek till katter.</p>
+            <p>
+              Vi är en grupp kattälskare som älskar att dela vår passion för
+              katter med andra. Vår kattklubb har funnits i flera år och vi är
+              engagerade i att hjälpa katter och främja kattvård.
+            </p>
+          </div>
+          <div class="section section5">
+            <a name="bottom" id="bottom"></a>
+            <h2>Kontakt</h2>
+            <p>
+              Kontakta oss om du har frågor eller förslag. Vi älskar att höra
+              från våra besökare.
+            </p>
+            <p>
+              Du kan nå oss på följande e-postadress:
+              <a href="mailto:kontakt@kattsidan.se">kontakt@kattsidan.se</a>
+            </p>
+          </div>
         </div>
-        </div>
-        <div class="section section4">
-          <h2>Om Oss</h2>
-          <p>Lite information om vår kattklubb och vår kärlek till katter.</p>
-          <p>
-            Vi är en grupp kattälskare som älskar att dela vår passion för
-            katter med andra. Vår kattklubb har funnits i flera år och vi är
-            engagerade i att hjälpa katter och främja kattvård.
-          </p>
-        </div>
-        <div class="section section5">
-          <h2>Kontakt</h2>
-          <p>
-            Kontakta oss om du har frågor eller förslag. Vi älskar att höra från
-            våra besökare.
-          </p>
-          <p>
-            Du kan nå oss på följande e-postadress:
-            <a href="mailto:kontakt@kattsidan.se">kontakt@kattsidan.se</a>
-          </p>
-        </div>
-      </div>
-    </main>
-    <footer>&copy; 2023 Kattsidan</footer>
-  </div>
+      </main>
+      <footer>&copy; 2023 Kattsidan</footer>
+    </div>
   </body>
 </html>
